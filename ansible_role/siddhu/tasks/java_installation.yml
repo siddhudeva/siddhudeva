@@ -1,0 +1,7 @@
+- name: updateing local system
+  yum: 
+    - update_cache: yes
+- name: install java
+  yum:
+    name: {{ java_version }}
+    state: present
