@@ -4,5 +4,6 @@
     - update_cache: yes
 - name: install java
   yum:
-    name: {{ java_version }}
-    state: present
+  with_items:
+     - {{ java_version }}
+     state: present
