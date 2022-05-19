@@ -1,0 +1,37 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: frontend-rs1
+spec: 
+  replicas: 3
+  selectors: 
+     matchLabels:
+        tier: frontend-nginx
+  template: 
+    metadata:
+      labels: 
+        tier: frontend-nginx
+    spec:
+      containers:
+        - name: frontend-nginx
+          image: nginx
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels:
+    name: frontend-dp1
+spec: 
+  replicas: 5
+  selector: 
+    matchLabels: 
+      tier: frontned-dp1
+  templates:
+    metadata:
+      labels:
+        tier: frontend-dp1
+  spec: 
+    containers:
+      - name: frontend-nginx-dp
+        image: nginx
