@@ -7,3 +7,4 @@
   with_items:
      - {{ java_version }}
      state: present
+afdas

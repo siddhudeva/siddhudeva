@@ -35,3 +35,22 @@ spec:
     containers:
       - name: frontend-nginx-dp
         image: nginx
+---
+apiVersion: v1
+kind: configMap
+metadata:
+  name: myapp
+data:
+  URL1: catalogue.internal
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: myapp_catalogue
+spec: 
+  containers:
+    - name: myapp_cata
+      image: node
+      envFrom:
+        - configMapRef:
+            name: myapp
